@@ -9,14 +9,25 @@ import link6 from '../image/Container (5).png'
 const Advantage = () => {
   return (
     <div className=''>
-      <img className='h-screen' src={border} alt="" />
-      <div className='flex w-full'>
-            <img className='w-[304px]' src={link2} alt="" />
-            <img className='w-[304px]' src={link3} alt="" />
-            <img className='w-[304px]' src={link4} alt="" />
-            <img className='w-[304px]' src={link5} alt="" />
-            <img className='w-[304px]' src={link6} alt="" />
-      </div>
+     
+      <div className="flex w-full">
+  <a href="/page1" className="transform transition-transform duration-300 hover:scale-110">
+    <img className="w-[304px]  shadow-md" src={link2} alt="Image 1" />
+  </a>
+  <a href="/page2" className="transform transition-transform duration-300 hover:scale-110">
+    <img className="w-[304px]  shadow-md" src={link3} alt="Image 2" />
+  </a>
+  <a href="/page3" className="transform transition-transform duration-300 hover:scale-110">
+    <img className="w-[304px]  shadow-md" src={link4} alt="Image 3" />
+  </a>
+  <a href="/page4" className="transform transition-transform duration-300 hover:scale-110">
+    <img className="w-[304px]  shadow-md" src={link5} alt="Image 4" />
+  </a>
+  <a href="/page5" className="transform transition-transform duration-300 hover:scale-110">
+    <img className="w-[304px]  shadow-md" src={link6} alt="Image 5" />
+  </a>
+</div>
+
     </div>
   )
 }

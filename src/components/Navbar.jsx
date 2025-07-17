@@ -2,7 +2,7 @@ import React from 'react'
 import link from '../image/Link.png';
 const Navbar = () => {
   return (
-    <div className="w-full relative">
+    <div className="w-full relative z-[1]">
       {/* Top bar */}
       <div className="bg-white h-[70px] w-full flex justify-end pt-2  px-6 gap-4 text-xs font-semibold text-blue-900">
         <ul className='flex gap-4 absolute right-13' >
@@ -37,7 +37,9 @@ const Navbar = () => {
           <p className="hover:underline cursor-pointer">STUDENT LIFE</p>
           <p className="hover:underline cursor-pointer">NEWS</p>
           <p className="hover:underline cursor-pointer">ABOUT US</p>
-          <p className="text-2xl cursor-pointer">≡</p>
+          <button className="text-3xl">
+  ☰
+</button>
         </div>
       </div>
     </div>
