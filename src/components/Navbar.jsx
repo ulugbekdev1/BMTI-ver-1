@@ -30,13 +30,12 @@ const Navbar = () => {
 
         
         <div className="flex items-center gap-4 text-sm font-semibold ">
-          <p className="hover:underline cursor-pointer">STUDY</p>
-          <p className="hover:underline cursor-pointer">ADMISSIONS</p>
-          <p className="hover:underline cursor-pointer">INTERNATIONAL</p>
-          <p className="hover:underline cursor-pointer">RESEARCH</p>
-          <p className="hover:underline cursor-pointer">STUDENT LIFE</p>
-          <p className="hover:underline cursor-pointer">NEWS</p>
-          <p className="hover:underline cursor-pointer">ABOUT US</p>
+          <p className="hover:underline cursor-pointer">TA'LIM</p>
+          <p className="hover:underline cursor-pointer">QABUL</p>
+          <p className="hover:underline cursor-pointer">ISH O'RINLARI</p>
+          <p className="hover:underline cursor-pointer">TALABALAR HAYOTI</p>
+          <p className="hover:underline cursor-pointer">YANGILIKLAR</p>
+          <p className="hover:underline cursor-pointer">BIZ HAQIMIZDA</p>
           <button className="text-3xl">
   ☰
 </button>

@@ -8,21 +8,15 @@ import con5 from '../image/Container (11).png'
 
 const Main4 = () => {
   return (
-    <div className='relative'>
+    <div className='relative mt-18'>
       <p className='text-blue-900 text-4xl font-bold mb-6 flex justify-center mt-24'>HEAR FROM OUR STUDENTS AND ALUMNI</p>
       <img className='w-full mt-18' src={con} alt="" /> 
       <div>
         <button className='btn w-[300px] h-[62px] bg-amber-500 text-white text-2xl absolute top-[500px] left-4 '>Ready Maryam's story</button>
       </div>
       <div>
-        <p className='text-blue-900 text-4xl font-bold mb-6 flex justify-center mt-24'>OUR PARTNERS</p>
-        <div className='flex justify-center gap-4'>
-            <img src={con1} alt="" />
-            <img src={con2} alt="" />
-            <img src={con3} alt="" />
-            <img src={con4} alt="" />
-            <img src={con5} alt="" />
-        </div>
+        
+        
       </div>
     </div>
   )
