@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="bg-blue-800 border-2 text-white h-[90px] w-[1400px] flex justify-between items-center px-6 absolute  left-18 top-8">
         <div className="flex items-center space-x-2">
           <div className=''>
-                <img  className='w-32' src={link} alt="" />
+                <p className='text-2xl font-semibold'>BMTI akademik litseyi</p>
               </div>
           <div className="text-left leading-tight">
            

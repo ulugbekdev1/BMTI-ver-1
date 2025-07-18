@@ -1,31 +1,65 @@
 import React from 'react'
 import border from '../image/Border.png';
-import link2 from '../image/Container (1).png'
-import link3 from '../image/Container (2).png'
-import link4 from '../image/Container (3).png'
-import link5 from '../image/Container (4).png'
-import link6 from '../image/Container (5).png'
+import matem1 from '../image/matem1.avif'
+import tabiy from '../image/tabiy.jpg'
+import eng from '../image/eng.jpg'
+import guman from '../image/guman.png'
+
 
 const Advantage = () => {
   return (
     <div className=''>
      
-      <div className="flex w-full">
-  <a href="/page1" className="transform transition-transform duration-300 hover:scale-110">
-    <img className="w-[304px]  shadow-md" src={link2} alt="Image 1" />
+      <div className="flex w-full ">
+        <div className="relative group w-[404px] h-[300px] overflow-hidden">
+  <a href="/page1" className="block w-full h-full">
+    <img
+      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+      src={matem1}
+      alt="Image 1"
+    />
+    <div className="absolute top-[230px] left-[50%] shadow-2xl translate-x-[-50%] w-[250px] h-[40px] bg-base-300 rounded-lg text-blue-900 text-2xl font-semibold flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 ">
+      <p className=''>ANIQ FANLAR</p>
+    </div>
   </a>
-  <a href="/page2" className="transform transition-transform duration-300 hover:scale-110">
-    <img className="w-[304px]  shadow-md" src={link3} alt="Image 2" />
+</div>
+  <div className="relative group w-[404px] h-[300px] overflow-hidden">
+  <a href="/page2" className="block w-full h-full">
+    <img
+      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+      src={tabiy}
+      alt="Image 2"
+    />
+    <div className="absolute top-[230px] left-[50%] shadow-2xl translate-x-[-50%] w-[250px] h-[40px] bg-base-300 rounded-lg text-blue-900 text-2xl font-semibold flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 ">
+      <p className=''>TABIY FANLAR</p>
+    </div>
   </a>
-  <a href="/page3" className="transform transition-transform duration-300 hover:scale-110">
-    <img className="w-[304px]  shadow-md" src={link4} alt="Image 3" />
+</div>
+  <div className="relative group w-[404px] h-[300px] overflow-hidden">
+  <a href="/page3" className="block w-full h-full">
+    <img
+      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+      src={eng}
+      alt="Image 3"
+    />
+    <div className="absolute top-[230px] left-[50%] shadow-2xl translate-x-[-50%] w-[250px] h-[40px] bg-base-300 rounded-lg text-blue-900 text-2xl font-semibold flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 ">
+      <p className=''>XORIJ FANLARI</p>
+    </div>
   </a>
-  <a href="/page4" className="transform transition-transform duration-300 hover:scale-110">
-    <img className="w-[304px]  shadow-md" src={link5} alt="Image 4" />
+</div>
+   <div className="relative group w-[404px] h-[300px] overflow-hidden">
+  <a href="/page4" className="block w-full h-full">
+    <img
+      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+      src={guman}
+      alt="Image 4"
+    />
+    <div className="absolute top-[230px] left-[50%] shadow-2xl translate-x-[-50%] w-[250px] h-[40px] bg-base-300 rounded-lg text-blue-900 text-2xl font-semibold flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 ">
+      <p className=''>GUMANITAR FANLAR</p>
+    </div>
   </a>
-  <a href="/page5" className="transform transition-transform duration-300 hover:scale-110">
-    <img className="w-[304px]  shadow-md" src={link6} alt="Image 5" />
-  </a>
+</div>
+ 
 </div>
 
     </div>
