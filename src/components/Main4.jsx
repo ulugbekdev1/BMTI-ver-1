@@ -1,25 +1,37 @@
-import React from 'react'
-import con from  '../image/Container (6).png'
-import con1 from '../image/Container (7).png'
-import con2 from '../image/Container (8).png'
-import con3 from '../image/Container (9).png'
-import con4 from '../image/Container (10).png'
-import con5 from '../image/Container (11).png'
+import React from 'react';
+import con from '../image/Container (6).png';
 
 const Main4 = () => {
   return (
-    <div className='relative mt-18'>
-      <p className='text-blue-900 text-4xl font-bold mb-6 flex justify-center mt-24'>HEAR FROM OUR STUDENTS AND ALUMNI</p>
-      <img className='w-full mt-18' src={con} alt="" /> 
-      <div>
-        <button className='btn w-[300px] h-[62px] bg-amber-500 text-white text-2xl absolute top-[500px] left-4 '>Ready Maryam's story</button>
-      </div>
-      <div>
-        
-        
+    <div className="relative mt-24 px-4 w-full">
+      {/* Title */}
+      <p className="text-blue-900 text-3xl sm:text-4xl font-bold mb-6 text-center">
+        HEAR FROM OUR STUDENTS AND ALUMNI
+      </p>
+
+      {/* Image with overlaid button */}
+      <div className="relative w-full max-w-[1200px] mx-auto">
+        <img
+          className="w-full h-auto object-cover rounded-lg shadow-lg"
+          src={con}
+          alt="students and alumni"
+        />
+
+        {/* Button absolutely centered on the image at fixed offset */}
+        <div className="absolute left-1/2 top-[55%] transform -translate-x-1/2 -translate-y-1/2">
+          {/* <button
+            className="bg-amber-500 text-white font-semibold rounded-lg shadow-md transition hover:bg-amber-600
+              w-[180px] h-[44px] text-sm
+              sm:w-[220px] sm:h-[50px] sm:text-base
+              md:w-[280px] md:h-[58px] md:text-lg
+              lg:w-[300px] lg:h-[62px] lg:text-xl"
+          >
+            Read Maryam's story
+          </button> */}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Main4
+export default Main4;
