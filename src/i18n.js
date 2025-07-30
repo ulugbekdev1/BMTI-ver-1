@@ -1,34 +1,32 @@
-// import i18n from 'i18next';
-// import { initReactI18next } from 'react-i18next';
-// import LanguageDetector from 'i18next-browser-languagedetector';
+// src/i18n.js
 
-// // Tarjima fayllar
-// const resources = {
-//   uz: {
-//     translation: {
-//       welcome: 'Xush kelibsiz',
-//       about: 'Biz haqimizda',
-//       contact: 'Aloqa',
-//     }
-//   },
-//   ru: {
-//     translation: {
-//       welcome: 'Добро пожаловать',
-//       about: 'О нас',
-//       contact: 'Контакт',
-//     }
-//   }
-// };
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-// i18n
-//   .use(LanguageDetector) // brauzerdan tilni aniqlaydi
-//   .use(initReactI18next)
-//   .init({
-//     resources,
-//     fallbackLng: 'uz', // agar topilmasa uzbek tilida bo'ladi
-//     interpolation: {
-//       escapeValue: false
-//     }
-//   });
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      uz: {
+        translation: {
+          welcome: "Xush kelibsiz",
+          login: "Kirish",
+          logout: "Chiqish"
+        }
+      },
+      ru: {
+        translation: {
+          welcome: "Добро пожаловать",
+          login: "Войти",
+          logout: "Выйти"
+        }
+      }
+    },
+    lng: 'uz', // boshlang'ich til
+    fallbackLng: 'uz',
+    interpolation: {
+      escapeValue: false
+    }
+  });
 
-// export default i18n;
+export default i18n;

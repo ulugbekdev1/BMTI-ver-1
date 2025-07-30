@@ -13,12 +13,12 @@ const Advantage = () => {
   ];
 
   return (
-    <div className="w-full px-4 py-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {items.map((item, index) => (
           <div
             key={index}
-            className="relative group w-full h-[250px] sm:h-[300px] overflow-hidden rounded-lg shadow-md"
+            className="relative group w-full h-[220px] sm:h-[250px] md:h-[280px] lg:h-[300px] overflow-hidden rounded-xl shadow-md"
           >
             <a href={item.link} className="block w-full h-full">
               <img
@@ -26,7 +26,7 @@ const Advantage = () => {
                 alt={item.title}
                 className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
               />
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-[40px] bg-base-300 rounded-lg text-blue-900 text-center text-lg sm:text-xl font-semibold flex items-center justify-center shadow-2xl transform transition-transform duration-300 group-hover:scale-110">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-[40px] sm:h-[45px] bg-base-300 rounded-lg text-blue-900 text-center text-sm sm:text-base md:text-lg font-semibold flex items-center justify-center shadow-xl transform transition-transform duration-300 group-hover:scale-110">
                 {item.title}
               </div>
             </a>
