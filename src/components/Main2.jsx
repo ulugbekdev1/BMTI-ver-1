@@ -5,7 +5,7 @@ import derektor from '../image/derektor.jpg';
 const Main2 = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 my-8 mt-32">
-      <div className="flex flex-row flex-wrap sm:flex-nowrap items-start justify-center gap-2 sm:gap-4">
+      <div className="flex flex-row flex-wrap sm:flex-nowrap items-center justify-center gap-2 sm:gap-4">
         
         {/* Direktor kartasi */}
         <div className="w-[100px] xs:w-[120px] sm:w-[200px] md:w-[250px] lg:w-[350px] shrink-0 bg-blue-900 text-white text-center rounded-lg overflow-hidden shadow-lg">
@@ -29,11 +29,7 @@ const Main2 = () => {
             zamonaviy va innovatsion yondashuv asosida ta’lim beradi. Bu yondashuv o‘quvchilarga
             chuqurlashtirilgan fanlar orqali puxta bilim olish, tanqidiy fikrlashni rivojlantirish
             hamda mustaqil qaror qabul qilish ko‘nikmalarini shakllantirish imkonini beradi.
-            <br /><br />
-            Litseyda taqdim etilayotgan o‘quv dasturlari xalqaro talablar darajasida ishlab chiqilgan
-            bo‘lib, fizika, matematika, kimyo, biologiya, ingliz tili, axborot texnologiyalari,
-            hamda boshqa fanlar bo‘yicha yuqori sifatli ta’lim olish imkonini beradi.
-            <br /><br />
+            
             Bizning o‘quvchilar zamonaviy axborot-resurs markazi, ilg‘or o‘quv laboratoriyalari va
             interaktiv dars metodlaridan foydalanadilar. Bu esa ularni nafaqat milliy, balki
             xalqaro mehnat bozorida ham raqobatbardosh mutaxassis sifatida shakllanishiga xizmat qiladi.

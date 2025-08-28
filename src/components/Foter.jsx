@@ -32,7 +32,7 @@ const Foter = () => {
 
         <div className="w-full max-w-[1200px] mx-auto relative h-[300px] sm:h-[500px] rounded-lg shadow-lg mt-10">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.321667437432!2d64.41941047544893!3d39.75488569565639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f5006718e671233%3A0x16285f8eafedc02c!2z0JHRg9GF0LDRgNGB0LrQuNC5INC40L3QttC10L3QtdGA0L3Qvi3RgtC10YXQvdC-0LvQvtCz0LjRh9C10YHQutC40Lkg0LjQvdGB0YLQuNGC0YPRgg!5e0!3m2!1sru!2sus!4v1752832541678!5m2!1sru!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.8402034907817!2d64.41987534122039!3d39.75472908860154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f500671abb82fb1%3A0xc727862450f87efa!2zUUMzRis3NEosINCR0YPRhdCw0YDQsCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e0!3m2!1sru!2sus!4v1756196942158!5m2!1sru!2sus"
             title="BMTI Map"
             frameBorder="0"
             allowFullScreen
