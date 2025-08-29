@@ -1,5 +1,6 @@
 import React from 'react';
 import litsey2 from '../image/litsey2.jpg';
+import line from '../image/Horizontal.png';
 
 const Main = () => {
   return (
@@ -9,9 +10,10 @@ const Main = () => {
       </p>
 
       {/* Har doim yonma-yon bo‘ladi */}
-      <div className="flex flex-row items-start gap-4">
+      <div className="flex flex-row items-center gap-8">
         {/* MATN */}
-        <div className="flex-1 min-w-0 text-gray-800 text-justify text-xs sm:text-sm md:text-base leading-tight sm:leading-snug md:leading-relaxed space-y-3">
+        <div className="flex-1  min-w-0 text-gray-800 text-justify text-xs sm:text-sm md:text-base leading-tight  sm:leading-snug md:leading-relaxed space-y-3">
+          <img src={line} alt="line" className="w-full max-w-[800px] h-0.5 my-1 sm:my-2" />
           <p>
             O‘zbekiston Respublikasi Oliy va o‘rta maxsus ta’lim vazirligi tasarrufidagi
             Buxoro Muhandislik-Texnologiya Instituti Akademik Litseyi 2023-yilda Buxoro
@@ -32,6 +34,7 @@ const Main = () => {
             resurslar bilan ta'minlangan. Kutubxonaning qulay muhiti o‘quvchilarni o‘qish va
             tadqiqot ishlari bilan shug‘ullanishga rag‘batlantiradi.
           </p>
+          <img src={line} alt="line" className="w-full max-w-[800px] h-0.5 my-1 sm:my-2" />
         </div>
 
         {/* RASM */}

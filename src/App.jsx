@@ -8,9 +8,9 @@ import Main2 from './components/Main2';
 import Main3 from './components/Main3';
 import Main4 from './components/Main4';
 import News from './components/News';
-import Teacher from "./components/Teacher";
-
-// Home sahifa
+import TeacherList from "./components/Teacher";
+import TeacherDetail from "./components/TeacherDetail";
+// import NewsDetail from "./components/NewsDetail";
 function HomePage() {
   return (
     <>
@@ -51,7 +51,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/teacher" element={<TeacherPage />} />
+        <Route path="/teachers" element={<TeacherList />} />
+        <Route path="/teachers/:id" element={<TeacherDetail />} />
+      
       </Routes>
       <Foter />
     </Router>
