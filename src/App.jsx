@@ -10,6 +10,7 @@ import Main4 from './components/Main4';
 import News from './components/News';
 import TeacherList from "./components/Teacher";
 import TeacherDetail from "./components/TeacherDetail";
+import NewsList from "./components/NewsList";
 // import NewsDetail from "./components/NewsDetail";
 function HomePage() {
   return (
@@ -21,6 +22,7 @@ function HomePage() {
       <Main />
       <Main2 />
       <Main3 />
+      <NewsList/>
       <Main4 />
     </>
   );

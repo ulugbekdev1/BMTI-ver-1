@@ -55,32 +55,7 @@ const Main3 = () => {
         </div>
       </div>
 
-      {/* Yangiliklar sarlavhasi */}
-      <p className="text-blue-900 sm:text-3xl font-bold text-center mb-6 mt-20">
-        SO'NGI YANGILIKLAR
-      </p>
-
-      {/* Kartalar – 10px gap */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px] justify-items-center">
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className="w-[180px] sm:w-[200px] md:w-[220px] lg:w-[250px] h-[320px] md:h-[350px] bg-white shadow-lg rounded-lg flex flex-col items-center justify-between p-3"
-          >
-            <img
-              src={card.img}
-              alt=""
-              className="w-full h-[100px] md:h-[120px] object-cover rounded-md"
-            />
-            <span className="text-blue-900 text-xs sm:text-sm text-center leading-tight">
-              {card.text}
-            </span>
-            <button className="w-[90px] h-[30px] bg-blue-900 text-white rounded-md text-xs hover:bg-blue-700 transition-colors">
-              Batafsil
-            </button>
-          </div>
-        ))}
-      </div>
+      
 
       {/* Bizning yutuqlar sarlavhasi */}
       <p className="text-blue-900 sm:text-3xl font-bold text-center mb-6 mt-20">
