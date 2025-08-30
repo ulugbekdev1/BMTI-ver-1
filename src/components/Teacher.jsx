@@ -85,11 +85,12 @@ const TeacherList = () => {
             ))}
       </div>
 
-      {/* Pagi{/* Pagination controls */}
+      {/* Pagination controls */}
 {!loading && totalPages > 1 && (
   <div className="flex justify-center items-center mt-10 gap-2 flex-wrap sm:flex-nowrap">
     {/* Oldingi tugma */}
     <button
+      type="button"
       onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
       disabled={currentPage === 1}
       className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
@@ -100,6 +101,7 @@ const TeacherList = () => {
     {/* Sahifa raqamlari */}
     {Array.from({ length: totalPages }, (_, i) => (
       <button
+        type="button"
         key={i}
         onClick={() => setCurrentPage(i + 1)}
         className={`px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded-full font-medium shadow-md transition ${
@@ -114,6 +116,7 @@ const TeacherList = () => {
 
     {/* Keyingi tugma */}
     <button
+      type="button"
       onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
       disabled={currentPage === totalPages}
       className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
@@ -122,6 +125,7 @@ const TeacherList = () => {
     </button>
   </div>
 )}
+
 
 
     </div>

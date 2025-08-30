@@ -41,11 +41,8 @@ function News() {
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
         {loading
-          ? [...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="bg-gray-200 animate-pulse rounded-3xl h-72"
-              ></div>
+          ? [...Array(newsPerPage)].map((_, i) => (
+              <div key={i} className="bg-gray-200 animate-pulse rounded-3xl h-72"></div>
             ))
           : currentNews.map((item) => (
               <div
@@ -75,44 +72,76 @@ function News() {
             ))}
       </div>
 
-{/* Pagination controls */}
-{!loading && totalPages > 1 && (
-  <div className="flex justify-center items-center mt-10 gap-2 flex-wrap sm:flex-nowrap">
-    {/* Oldingi tugma */}
-    <button
-      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-      disabled={currentPage === 1}
-      className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      &#8592;
-    </button>
+      {/* Pagination controls */}
+      {!loading && totalPages > 1 && (
+        <div className="flex justify-center items-center mt-10 gap-2 flex-wrap sm:flex-nowrap">
+          <button
+            type="button"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            &#8592;
+          </button>
 
-    {/* Sahifa raqamlari */}
-    {Array.from({ length: totalPages }, (_, i) => (
-      <button
-        key={i}
-        onClick={() => setCurrentPage(i + 1)}
-        className={`px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded-full font-medium shadow-md transition ${
-          currentPage === i + 1
-            ? "bg-blue-600 text-white scale-105"
-            : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
-        }`}
-      >
-        {i + 1}
-      </button>
-    ))}
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setCurrentPage(i + 1)}
+              className={`px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded-full font-medium shadow-md transition transform-gpu will-change-transform ${
+                currentPage === i + 1
+                  ? "bg-blue-600 text-white scale-105"
+                  : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white hover:scale-105"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
 
-    {/* Keyingi tugma */}
-    <button
-      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-      disabled={currentPage === totalPages}
-      className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      &#8594;
-    </button>
-  </div>
-)}
+          <button
+            type="button"
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            &#8594;
+          </button>
+        </div>
+      )}
 
+      {/* Modal */}
+      {selectedNews && (
+        <div
+          onClick={() => setSelectedNews(null)}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-6"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-white rounded-3xl max-w-full sm:max-w-2xl md:max-w-3xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 md:p-8 shadow-xl"
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedNews(null)}
+              className="absolute top-2 right-3 text-white bg-red-500 hover:bg-red-600 rounded-full w-8 h-8 flex items-center justify-center shadow-md text-xl font-bold"
+            >
+              ×
+            </button>
+
+            <img
+              src={`https://api.bdtu-al.uz${selectedNews.image}`}
+              alt={selectedNews.title}
+              className="w-full h-48 sm:h-60 md:h-72 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-blue-900">
+              {selectedNews.title}
+            </h3>
+            <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+              {selectedNews.description}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
