@@ -75,58 +75,44 @@ function News() {
             ))}
       </div>
 
-     {/* Pagination controls */}
+{/* Pagination controls */}
 {!loading && totalPages > 1 && (
-  <div className="flex flex-col sm:flex-row justify-center items-center mt-10 gap-3">
+  <div className="flex justify-center items-center mt-10 gap-2 flex-wrap sm:flex-nowrap">
     {/* Oldingi tugma */}
     <button
       onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
       disabled={currentPage === 1}
-      className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+      className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      &#8592; Oldingi
+      &#8592;
     </button>
 
-    {/* Sahifa raqamlarini select qilib tanlash (faqat mobil uchun) */}
-    <select
-      value={currentPage}
-      onChange={(e) => setCurrentPage(Number(e.target.value))}
-      className="block sm:hidden px-4 py-2 rounded-full border border-gray-300 shadow-md"
-    >
-      {Array.from({ length: totalPages }, (_, i) => (
-        <option key={i} value={i + 1}>
-          Sahifa {i + 1}
-        </option>
-      ))}
-    </select>
-
-    {/* Sahifa raqamlari (faqat desktop) */}
-    <div className="hidden sm:flex gap-2">
-      {Array.from({ length: totalPages }, (_, i) => (
-        <button
-          key={i}
-          onClick={() => setCurrentPage(i + 1)}
-          className={`px-4 py-2 rounded-full font-medium shadow-md transition ${
-            currentPage === i + 1
-              ? "bg-blue-600 text-white scale-110"
-              : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
-          }`}
-        >
-          {i + 1}
-        </button>
-      ))}
-    </div>
+    {/* Sahifa raqamlari */}
+    {Array.from({ length: totalPages }, (_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentPage(i + 1)}
+        className={`px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded-full font-medium shadow-md transition ${
+          currentPage === i + 1
+            ? "bg-blue-600 text-white scale-105"
+            : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
+        }`}
+      >
+        {i + 1}
+      </button>
+    ))}
 
     {/* Keyingi tugma */}
     <button
       onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
       disabled={currentPage === totalPages}
-      className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+      className="px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      Keyingi &#8594;
+      &#8594;
     </button>
   </div>
 )}
+
     </div>
   );
 }
