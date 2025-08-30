@@ -8,6 +8,10 @@ const TeacherList = () => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const teachersPerPage = 6;
+
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
@@ -37,6 +41,12 @@ const TeacherList = () => {
     </div>
   );
 
+  // Pagination calculations
+  const indexOfLastTeacher = currentPage * teachersPerPage;
+  const indexOfFirstTeacher = indexOfLastTeacher - teachersPerPage;
+  const currentTeachers = teachers.slice(indexOfFirstTeacher, indexOfLastTeacher);
+  const totalPages = Math.ceil(teachers.length / teachersPerPage);
+
   return (
     <div className="p-6 md:p-10 max-w-7xl mx-auto mt-16">
       <h2 className="text-4xl font-bold text-center text-blue-900 mb-10">O'qituvchilar</h2>
@@ -44,7 +54,7 @@ const TeacherList = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {loading
           ? Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
-          : teachers.map((t, index) => (
+          : currentTeachers.map((t, index) => (
               <div
                 key={index}
                 className="bg-white shadow-2xl rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-300"
@@ -62,8 +72,6 @@ const TeacherList = () => {
                   <p className="text-gray-600 text-sm">Tug'ilgan sana: {t.date_of_birth}</p>
                   <p className="text-gray-600 text-sm">Jinsi: {t.gender === "male" ? "Erkak" : "Ayol"}</p>
                   <p className="text-gray-700 mt-2">{t.bio}</p>
-
-                  {/* Shu joy AVVAL bo'sh edi — style’ni buzmay, faqat link qo‘ydik */}
                   <div className="flex gap-3 mt-4">
                     <Link
                       to={`/teachers/${t.id}`}
@@ -76,6 +84,41 @@ const TeacherList = () => {
               </div>
             ))}
       </div>
+
+      {/* Pagination controls */}
+{!loading && (
+  <div className="flex justify-center mt-10 gap-3 flex-wrap">
+    <button
+      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+      disabled={currentPage === 1}
+      className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      &#8592; Oldingi
+    </button>
+
+    {Array.from({ length: totalPages }, (_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentPage(i + 1)}
+        className={`px-4 py-2 rounded-full font-medium shadow-md transition ${
+          currentPage === i + 1
+            ? "bg-blue-600 text-white scale-110"
+            : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
+        }`}
+      >
+        {i + 1}
+      </button>
+    ))}
+
+    <button
+      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+      disabled={currentPage === totalPages}
+      className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Keyingi &#8594;
+    </button>
+  </div>
+)}
     </div>
   );
 };

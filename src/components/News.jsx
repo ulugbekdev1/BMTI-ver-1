@@ -6,13 +6,15 @@ function News() {
   const [selectedNews, setSelectedNews] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const newsPerPage = 6;
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const res = await axios.get("https://api.bdtu-al.uz/news/all_news/", {
-          headers: {
-            Authorization: "Basic MTox",
-          },
+          headers: { Authorization: "Basic MTox" },
         });
         setNews(res.data.results);
       } catch (err) {
@@ -23,6 +25,12 @@ function News() {
     };
     fetchNews();
   }, []);
+
+  // Pagination calculations
+  const indexOfLastNews = currentPage * newsPerPage;
+  const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+  const totalPages = Math.ceil(news.length / newsPerPage);
 
   return (
     <div className="p-4 sm:p-6 md:p-10">
@@ -39,7 +47,7 @@ function News() {
                 className="bg-gray-200 animate-pulse rounded-3xl h-72"
               ></div>
             ))
-          : news.map((item) => (
+          : currentNews.map((item) => (
               <div
                 key={item.id}
                 className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-transform duration-300"
@@ -67,26 +75,56 @@ function News() {
             ))}
       </div>
 
+      {/* Pagination controls */}
+      {!loading && totalPages > 1 && (
+        <div className="flex justify-center mt-10 gap-3 flex-wrap">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            &#8592; Oldingi
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`px-4 py-2 rounded-full font-medium shadow-md transition ${
+                currentPage === i + 1
+                  ? "bg-blue-600 text-white scale-110"
+                  : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Keyingi &#8594;
+          </button>
+        </div>
+      )}
+
       {/* Modal */}
       {selectedNews && (
         <div
-          onClick={() => setSelectedNews(null)} // fon bosilsa yopiladi
+          onClick={() => setSelectedNews(null)}
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-6"
         >
           <div
-            onClick={(e) => e.stopPropagation()} // modal ichini bosganda yopilmasin
-            className="relative bg-white rounded-3xl max-w-full sm:max-w-2xl md:max-w-3xl w-full 
-                          max-h-[90vh] overflow-y-auto p-4 sm:p-6 md:p-8 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-white rounded-3xl max-w-full sm:max-w-2xl md:max-w-3xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 md:p-8 shadow-xl"
           >
-            {/* Close button */}
             <button
               onClick={() => setSelectedNews(null)}
-              className="absolute top-2  right-3 text-white bg-red-500 hover:bg-red-600 
-                         rounded-full w-8 h-8 flex items-center justify-center shadow-md text-xl font-bold"
+              className="absolute top-2 right-3 text-white bg-red-500 hover:bg-red-600 rounded-full w-8 h-8 flex items-center justify-center shadow-md text-xl font-bold"
             >
-              <div  className="mb-1" >
-              ×
-              </div>
+              <div className="mb-1">×</div>
             </button>
 
             <img
