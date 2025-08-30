@@ -75,72 +75,58 @@ function News() {
             ))}
       </div>
 
-      {/* Pagination controls */}
-      {!loading && totalPages > 1 && (
-        <div className="flex justify-center mt-10 gap-3 flex-wrap">
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-            className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            &#8592; Oldingi
-          </button>
+     {/* Pagination controls */}
+{!loading && totalPages > 1 && (
+  <div className="flex flex-col sm:flex-row justify-center items-center mt-10 gap-3">
+    {/* Oldingi tugma */}
+    <button
+      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+      disabled={currentPage === 1}
+      className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      &#8592; Oldingi
+    </button>
 
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentPage(i + 1)}
-              className={`px-4 py-2 rounded-full font-medium shadow-md transition ${
-                currentPage === i + 1
-                  ? "bg-blue-600 text-white scale-110"
-                  : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
+    {/* Sahifa raqamlarini select qilib tanlash (faqat mobil uchun) */}
+    <select
+      value={currentPage}
+      onChange={(e) => setCurrentPage(Number(e.target.value))}
+      className="block sm:hidden px-4 py-2 rounded-full border border-gray-300 shadow-md"
+    >
+      {Array.from({ length: totalPages }, (_, i) => (
+        <option key={i} value={i + 1}>
+          Sahifa {i + 1}
+        </option>
+      ))}
+    </select>
 
-          <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Keyingi &#8594;
-          </button>
-        </div>
-      )}
-
-      {/* Modal */}
-      {selectedNews && (
-        <div
-          onClick={() => setSelectedNews(null)}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-6"
+    {/* Sahifa raqamlari (faqat desktop) */}
+    <div className="hidden sm:flex gap-2">
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button
+          key={i}
+          onClick={() => setCurrentPage(i + 1)}
+          className={`px-4 py-2 rounded-full font-medium shadow-md transition ${
+            currentPage === i + 1
+              ? "bg-blue-600 text-white scale-110"
+              : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
+          }`}
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative bg-white rounded-3xl max-w-full sm:max-w-2xl md:max-w-3xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 md:p-8 shadow-xl"
-          >
-            <button
-              onClick={() => setSelectedNews(null)}
-              className="absolute top-2 right-3 text-white bg-red-500 hover:bg-red-600 rounded-full w-8 h-8 flex items-center justify-center shadow-md text-xl font-bold"
-            >
-              <div className="mb-1">×</div>
-            </button>
+          {i + 1}
+        </button>
+      ))}
+    </div>
 
-            <img
-              src={`https://api.bdtu-al.uz${selectedNews.image}`}
-              alt={selectedNews.title}
-              className="w-full h-48 sm:h-60 md:h-72 object-cover rounded-lg mb-4"
-            />
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-blue-900">
-              {selectedNews.title}
-            </h3>
-            <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-              {selectedNews.description}
-            </p>
-          </div>
-        </div>
-      )}
+    {/* Keyingi tugma */}
+    <button
+      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+      disabled={currentPage === totalPages}
+      className="px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md hover:from-blue-800 hover:to-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Keyingi &#8594;
+    </button>
+  </div>
+)}
     </div>
   );
 }

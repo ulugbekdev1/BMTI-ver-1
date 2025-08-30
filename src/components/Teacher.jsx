@@ -86,8 +86,9 @@ const TeacherList = () => {
       </div>
 
       {/* Pagination controls */}
-{!loading && (
-  <div className="flex justify-center mt-10 gap-3 flex-wrap">
+{!loading && totalPages > 1 && (
+  <div className="flex flex-col sm:flex-row justify-center items-center mt-10 gap-3">
+    {/* Oldingi tugma */}
     <button
       onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
       disabled={currentPage === 1}
@@ -96,20 +97,37 @@ const TeacherList = () => {
       &#8592; Oldingi
     </button>
 
-    {Array.from({ length: totalPages }, (_, i) => (
-      <button
-        key={i}
-        onClick={() => setCurrentPage(i + 1)}
-        className={`px-4 py-2 rounded-full font-medium shadow-md transition ${
-          currentPage === i + 1
-            ? "bg-blue-600 text-white scale-110"
-            : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
-        }`}
-      >
-        {i + 1}
-      </button>
-    ))}
+    {/* Sahifa raqamlarini select qilib tanlash (faqat mobil uchun) */}
+    <select
+      value={currentPage}
+      onChange={(e) => setCurrentPage(Number(e.target.value))}
+      className="block sm:hidden px-4 py-2 rounded-full border border-gray-300 shadow-md"
+    >
+      {Array.from({ length: totalPages }, (_, i) => (
+        <option key={i} value={i + 1}>
+          Sahifa {i + 1}
+        </option>
+      ))}
+    </select>
 
+    {/* Sahifa raqamlari (faqat desktop) */}
+    <div className="hidden sm:flex gap-2">
+      {Array.from({ length: totalPages }, (_, i) => (
+        <button
+          key={i}
+          onClick={() => setCurrentPage(i + 1)}
+          className={`px-4 py-2 rounded-full font-medium shadow-md transition ${
+            currentPage === i + 1
+              ? "bg-blue-600 text-white scale-110"
+              : "bg-gray-200 text-gray-700 hover:bg-blue-400 hover:text-white"
+          }`}
+        >
+          {i + 1}
+        </button>
+      ))}
+    </div>
+
+    {/* Keyingi tugma */}
     <button
       onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
       disabled={currentPage === totalPages}
@@ -119,6 +137,7 @@ const TeacherList = () => {
     </button>
   </div>
 )}
+
     </div>
   );
 };
